@@ -10,10 +10,10 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Home from './screens/Home';
 import Users from './screens/Users';
 import CurrentUser from './screens/CurrentUser';
+import {Routes} from './routes/routes';
+import MainTab from './screens/tabs/MainTab';
 
 const Stack = createNativeStackNavigator();
-
-console.log(Stack);
 
 const App = (): JSX.Element => {
   return (
@@ -28,10 +28,11 @@ const App = (): JSX.Element => {
             fontWeight: '600',
           },
         }}
-        initialRouteName="Home">
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Users" component={Users} />
-        <Stack.Screen name="CurrentUser" component={CurrentUser} />
+        initialRouteName={Routes.HOME}>
+        <Stack.Screen name={Routes.HOME} component={Home} />
+        <Stack.Screen name={Routes.USERS} component={Users} />
+        <Stack.Screen name={Routes.CURRENT_USERS} component={CurrentUser} />
+        <Stack.Screen name={Routes.MAIN_TAB} component={MainTab} />
       </Stack.Navigator>
     </NavigationContainer>
   );

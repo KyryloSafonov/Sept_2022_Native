@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import {FlatList, Text, TouchableOpacity, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import {Routes} from '../routes/routes';
+import {UsersNavigationProps} from '../routes/types';
 
 const Users = () => {
   const [users, setUsers] = useState<any[]>([]);
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<UsersNavigationProps>();
 
   useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/users')
@@ -13,7 +15,7 @@ const Users = () => {
   }, []);
 
   const navigateToCurrentUser = (userId: string) =>
-    navigation.navigate('CurrentUser', {
+    navigation.navigate(Routes.CURRENT_USERS, {
       userId,
     });
   const renderItem = ({item, index}: {item: any; index: number}) => {

@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import {Text, View} from 'react-native';
 import {useRoute} from '@react-navigation/native';
+import {CurrentUserRouteProps} from '../routes/types';
+import {Routes} from '../routes/routes';
 
 const CurrentUser = () => {
   const [user, setUser] = useState<any>(null);
-  const {params} = useRoute<any>();
+  const {params} = useRoute<CurrentUserRouteProps<Routes.CURRENT_USERS>>();
   useEffect(() => {
     fetch(`https://jsonplaceholder.typicode.com/users/${params.userId}`)
       .then(res => res.json())
